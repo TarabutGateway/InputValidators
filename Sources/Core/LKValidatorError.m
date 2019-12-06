@@ -24,7 +24,7 @@
 
 NSString * const LKValidatorErrorDomain = @"InputValidationErrorDomain";
 
-@implementation LKValidatorError
+@implementation NSError (LKValidatorErrorDomain)
 
 + (instancetype)unknownValidationError {
     return [self errorWithCode:LKValidatorUnknownErrorCode];
@@ -58,9 +58,9 @@ NSString * const LKValidatorErrorDomain = @"InputValidationErrorDomain";
     return [self errorWithCode:LKValidatorMultipleErrorCode];
 }
 
-+ (instancetype)multipleValidationErrorWithErrors:(NSArray<LKValidatorError *> *)errors {
++ (instancetype)multipleValidationErrorWithErrors:(NSArray<NSError *> *)errors {
     NSMutableString *result = [NSMutableString string];
-    for (LKValidatorError *error in errors) {
+    for (NSError *error in errors) {
         NSString *reason = [error localizedFailureReason];
         [result appendFormat:@"%@\n", reason];
     }

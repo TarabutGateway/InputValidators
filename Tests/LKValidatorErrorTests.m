@@ -27,12 +27,12 @@
 - (void)testThatItCanInstanceErrorWithErrorCode {
     LKValidatorErrorCode expected = LKValidatorAlphaErrorCode;
     
-    LKValidatorError *error = [LKValidatorError errorWithCode:LKValidatorAlphaErrorCode];
+    NSError *error = [NSError errorWithCode:LKValidatorAlphaErrorCode];
     XCTAssertTrue(error.code == expected);
 }
 
 - (void)testThatItHasADefaultReasonForErrorCode {
-    LKValidatorError *error = [LKValidatorError errorWithCode:LKValidatorNumericErrorCode];
+    NSError *error = [NSError errorWithCode:LKValidatorNumericErrorCode];
     XCTAssertNotNil(error.userInfo[NSLocalizedFailureReasonErrorKey]);
 }
 
@@ -40,7 +40,7 @@
     LKValidatorErrorCode expectedCode = LKValidatorRequiredErrorCode;
     NSString *expectedReason = @"A Reason";
     
-    LKValidatorError *error = [LKValidatorError errorWithCode:expectedCode reason:expectedReason];
+    NSError *error = [NSError errorWithCode:expectedCode reason:expectedReason];
     XCTAssertTrue(error.code == expectedCode);
     XCTAssertTrue([error.userInfo[NSLocalizedFailureReasonErrorKey] isEqualToString:expectedReason]);
 }
@@ -48,70 +48,70 @@
 - (void)testThatInCanInstanceUnknownError {
     LKValidatorErrorCode expected = LKValidatorUnknownErrorCode;
     
-    LKValidatorError *error = [LKValidatorError unknownValidationError];
+    NSError *error = [NSError unknownValidationError];
     XCTAssertTrue(error.code == expected);
 }
 
 - (void)testThatInCanInstanceNumericError {
     LKValidatorErrorCode expected = LKValidatorNumericErrorCode;
     
-    LKValidatorError *error = [LKValidatorError numericValidationError];
+    NSError *error = [NSError numericValidationError];
     XCTAssertTrue(error.code == expected);
 }
 
 - (void)testThatInCanInstanceAlphaError {
     LKValidatorErrorCode expected = LKValidatorAlphaErrorCode;
     
-    LKValidatorError *error = [LKValidatorError alphaValidationError];
+    NSError *error = [NSError alphaValidationError];
     XCTAssertTrue(error.code == expected);
 }
 
 - (void)testThatInCanInstanceEmailError {
     LKValidatorErrorCode expected = LKValidatorEmailErrorCode;
     
-    LKValidatorError *error = [LKValidatorError emailValidationError];
+    NSError *error = [NSError emailValidationError];
     XCTAssertTrue(error.code == expected);
 }
 
 - (void)testThatInCanInstanceRequiredError {
     LKValidatorErrorCode expected = LKValidatorRequiredErrorCode;
     
-    LKValidatorError *error = [LKValidatorError requiredValidationError];
+    NSError *error = [NSError requiredValidationError];
     XCTAssertTrue(error.code == expected);
 }
 
 - (void)testThatInCanInstanceLengthError {
     LKValidatorErrorCode expected = LKValidatorLengthErrorCode;
     
-    LKValidatorError *error = [LKValidatorError lengthValidationError];
+    NSError *error = [NSError lengthValidationError];
     XCTAssertTrue(error.code == expected);
 }
 
 - (void)testThatInCanInstanceRegexError {
     LKValidatorErrorCode expected = LKValidatorRegexErrorCode;
     
-    LKValidatorError *error = [LKValidatorError regexValidationError];
+    NSError *error = [NSError regexValidationError];
     XCTAssertTrue(error.code == expected);
 }
 
 - (void)testThatInCanInstanceMultipleError {
     LKValidatorErrorCode expected = LKValidatorMultipleErrorCode;
     
-    LKValidatorError *error = [LKValidatorError multipleValidationError];
+    NSError *error = [NSError multipleValidationError];
     XCTAssertTrue(error.code == expected);
 }
 
 - (void)testThatItCanInstanceMultipleErrorFromArrayOfErrors {
     LKValidatorErrorCode expectedCode = LKValidatorMultipleErrorCode;
     
-    LKValidatorError *alphaError = [LKValidatorError alphaValidationError];
-    LKValidatorError *numericalError = [LKValidatorError numericValidationError];
+    NSError *alphaError = [NSError alphaValidationError];
+    NSError *numericalError = [NSError numericValidationError];
     
     NSString *alphaReason = alphaError.userInfo[NSLocalizedFailureReasonErrorKey];
     NSString *numericalReason = numericalError.userInfo[NSLocalizedFailureReasonErrorKey];
     NSString *expectedReason = [NSString stringWithFormat:@"%@\n%@", alphaReason, numericalReason];
     
-    LKValidatorError *error = [LKValidatorError multipleValidationErrorWithErrors:@[alphaError, numericalError]];
+    NSError *error = [NSError multipleValidationErrorWithErrors:@[alphaError, numericalError]];
     
     XCTAssertTrue(error.code == expectedCode);
     XCTAssertTrue([error.userInfo[NSLocalizedFailureReasonErrorKey] isEqualToString:expectedReason]);

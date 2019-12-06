@@ -32,7 +32,7 @@
     self = [super init];
     
     if (self) {
-        _error = [LKValidatorError unknownValidationError];
+        _error = [NSError unknownValidationError];
     }
     
     return self;

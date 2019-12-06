@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LKValidator : NSObject
 
-@property (nonatomic, strong) LKValidatorError *error;
+@property (nonatomic, strong) NSError *error;
 
 + (instancetype)validator;
 

@@ -30,7 +30,7 @@ static NSUInteger const LKValidatorDefaultMinLength = 5;
     self = [super init];
     
     if (self) {
-        self.error = [LKValidatorError lengthValidationError];
+        self.error = [NSError lengthValidationError];
         _length = LKValidatorDefaultMinLength;
     }
     

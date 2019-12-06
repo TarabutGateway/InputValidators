@@ -29,7 +29,7 @@
     
     if (self) {
         self.regex = @"^[a-zA-Z]*$";
-        self.error = [LKValidatorError alphaValidationError];
+        self.error = [NSError alphaValidationError];
     }
     
     return self;

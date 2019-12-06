@@ -28,7 +28,7 @@
     self = [super init];
     
     if (self) {
-        self.error = [LKValidatorError multipleValidationError];
+        self.error = [NSError multipleValidationError];
         _validators = @[];
     }
     
@@ -54,7 +54,7 @@
 
     BOOL isValid = [errors count] == 0;
     if (!isValid && error) {
-        *error = [LKValidatorError multipleValidationErrorWithErrors:errors];
+        *error = [NSError multipleValidationErrorWithErrors:errors];
     }
 
     return isValid;

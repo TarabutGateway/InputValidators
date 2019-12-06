@@ -28,7 +28,7 @@
     self = [super init];
     
     if (self) {
-        self.error = [LKValidatorError requiredValidationError];
+        self.error = [NSError requiredValidationError];
     }
     
     return self;

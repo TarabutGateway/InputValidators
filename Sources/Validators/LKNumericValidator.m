@@ -29,7 +29,7 @@
     
     if (self) {
         self.regex = @"^[0-9]*$";
-        self.error = [LKValidatorError numericValidationError];
+        self.error = [NSError numericValidationError];
     }
     
     return self;

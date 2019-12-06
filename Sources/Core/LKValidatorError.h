@@ -36,7 +36,7 @@ typedef NS_ENUM(NSInteger, LKValidatorErrorCode) {
     LKValidatorMultipleErrorCode = 1100
 };
 
-@interface LKValidatorError : NSError
+@interface NSError (LKValidatorErrorDomain)
 
 + (instancetype)unknownValidationError;
 + (instancetype)numericValidationError;
@@ -47,7 +47,7 @@ typedef NS_ENUM(NSInteger, LKValidatorErrorCode) {
 + (instancetype)regexValidationError;
 
 + (instancetype)multipleValidationError;
-+ (instancetype)multipleValidationErrorWithErrors:(NSArray<LKValidatorError *> *)errors;
++ (instancetype)multipleValidationErrorWithErrors:(NSArray<NSError *> *)errors;
 
 + (instancetype)errorWithCode:(LKValidatorErrorCode)code;
 + (instancetype)errorWithCode:(LKValidatorErrorCode)code reason:(nullable NSString *)reason;
